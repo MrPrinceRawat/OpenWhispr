@@ -8,7 +8,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private let transcriber = Transcriber()
     private let history = HistoryStore()
     private let textProcessor = TextProcessor()
-    private let dictionary = DictionaryStore()
+    private let dictionary = DictionaryStore.shared
     private let vad = VoiceActivityDetector()
     private var editMonitorTimer: Timer?
     private var lastPastedText: String?
@@ -530,6 +530,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                         let pasted = self.pasteText(finalText)
                         if pasted {
                             self.pillWindow.setState(.idle)
+                            self.startEditMonitoring(pastedText: finalText)
                         }
                         // If paste failed, pasteText already showed the error pill
                     } else {
