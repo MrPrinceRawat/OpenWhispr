@@ -61,7 +61,7 @@ struct SettingsContentView: View {
     @State private var runningApps: [(name: String, bundleID: String)] = []
     @State private var selectedAppBundleID = ""
     @State private var newAppTone = "neutral"
-    private let dictionary = DictionaryStore()
+    private let dictionary = DictionaryStore.shared
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {

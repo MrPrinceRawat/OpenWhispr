@@ -1,6 +1,7 @@
 import Foundation
 
 class DictionaryStore {
+    static let shared = DictionaryStore()
     private var mappings: [String: String] = [:]
     private let fileURL: URL
 
